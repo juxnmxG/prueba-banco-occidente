@@ -1,0 +1,21 @@
+service: prueba-Banco-Occidente
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-2
+  apiGateway:
+    shouldStartNameWithService: true
+
+plugins:
+  - serverless-offline
+
+functions:
+  getSizes:
+    handler: handler.getSizes
+    events:
+      - http:
+          path: /sizes
+          method: post
